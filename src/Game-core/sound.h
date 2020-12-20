@@ -9,19 +9,17 @@
 #define BGMPath "C:/Users/HP/source/repos/sfml-snake/sounds/BGM.wav"
 #define deathSoundPath "C:/Users/HP/source/repos/sfml-snake/sounds/death.wav"
 #define menuMusicPath "C:/Users/HP/source/repos/sfml-snake/sounds/mainMenu.wav"
-#define MAX_NUMBER_OF_ITEMS 3
 
 
-
-class sound
+class SoundController
 {
 public:
-	sound();
-	void onCollisionSound();
+	SoundController();
 	void BGM();
-	void menuMusic(bool x);
-	bool isDeath;
-	bool isFood;
+	void playMenuMusic();
+	void stopMenuMusic();
+	void playDeathSound();
+	void playFoodSound();
 
 private:
 	sf::SoundBuffer eatSoundBuffer;

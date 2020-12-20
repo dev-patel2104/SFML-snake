@@ -3,10 +3,8 @@
 
 
 
-sound::sound()
+SoundController::SoundController()
 {
-	isDeath = false;
-	isFood = false;
 	if (!eatSoundBuffer.loadFromFile(eatSoundPath))
 	{
 		std::cout << "hit sound file is either corrupted or location given is wrong" << std::endl;
@@ -33,26 +31,21 @@ sound::sound()
 	MM.setVolume(60);
 }
 
-
-void sound::onCollisionSound()
+void SoundController::playDeathSound()
 {
-	if (isDeath)
+	deathSound.play();
+	while (deathSound.getStatus() == sf::Sound::Playing)
 	{
-		deathSound.play();
-		while (deathSound.getStatus() == sf::Sound::Playing)
-		{
-			sf::sleep(sf::milliseconds(100));
-		}
+		sf::sleep(sf::milliseconds(100));
 	}
-	if (isFood)
-	{
-		eatSound.play();
-	}
-	isDeath = false;
-	isFood = false;
 }
 
-void sound::BGM()
+void SoundController::playFoodSound()
+{
+	eatSound.play();
+}
+
+void SoundController::BGM()
 {
 	if(bgm.getStatus() == sf::Music::Playing)
 	{
@@ -63,17 +56,13 @@ void sound::BGM()
 	bgm.setLoop(true);
 }
 
-void sound::menuMusic(bool x)
+void SoundController::playMenuMusic()
 {
-	if (x == false)
-	{
-		MM.stop();
-		return;
-	}
-	else
-	{
-		MM.play();
-		MM.setLoop(true);
-	}
-	
+	MM.play();
+	MM.setLoop(true);
+}
+
+void SoundController::stopMenuMusic()
+{
+	MM.stop();
 }

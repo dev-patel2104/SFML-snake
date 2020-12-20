@@ -27,14 +27,12 @@ namespace game {
 
 	class MainMenu {
 	public:
-		
-		void draw(sf::RenderWindow &window);
+
+
 		void start(sf::RenderWindow *w);
-		void MoveUp();
-		void MoveDown();
-		int GetPressedItem() { return selectedItemIndex; }
+
 	private:
-		int selectedItemIndex;
+		
 		gmenu::MenuItem menuItems[4];
 		gmenu::Action *action[4];
 
@@ -45,8 +43,6 @@ namespace game {
 			"Exit"
 		};
 
-		sf::Font font;
-		sf::Text menu[4];
 	};
 
 	
